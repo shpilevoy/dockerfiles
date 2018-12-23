@@ -1,0 +1,15 @@
+FROM golang:alpine
+
+RUN adduser --disabled-password --gecos "" app
+
+COPY ./bin /app/bin
+
+COPY ./templates /app/templates
+
+COPY ./translate /app/translate
+
+USER app
+
+WORKDIR /app
+
+CMD /app/bin
