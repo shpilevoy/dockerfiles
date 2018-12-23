@@ -6,7 +6,7 @@ CMD GOOS=linux CGO_ENABLED=0 go build -o bin
 
 FROM golang:alpine
 RUN adduser --disabled-password --gecos "" app
-COPY ./bin /app/bin
+COPY --from=build /app/bin /app/bin
 USER app
 WORKDIR /app
 EXPOSE 8000
